@@ -1,6 +1,5 @@
 const buttonNewGame = document.getElementById("button-new-game");
-// const apiUrl = "https://tictactoe.wntzn.com/api/games";
-const apiUrl = "http://localhost:5000/api/games";
+const apiUrl = "https://connectfour.wntzn.com/api/games";
 
 buttonNewGame.addEventListener("click", newGame);
 

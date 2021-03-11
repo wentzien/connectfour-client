@@ -8,10 +8,8 @@ const playerScore = document.getElementById("player-score");
 const opponentScore = document.getElementById("opponent-score");
 const gameId = urlParams.get("gameId");
 const playerId = urlParams.get("playerId");
-// const clientUrl = "https://tictactoe.wntzn.com";
-const clientUrl = "http://localhost:5000";
-// const socketUrl = "https://tictactoe.wntzn.com";
-const socketUrl = "http://localhost:5000";
+const clientUrl = "https://connectfour.wntzn.com";
+const socketUrl = "https://connectfour.wntzn.com";
 
 let xArea, yArea;
 let gameData;
