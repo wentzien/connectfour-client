@@ -21,7 +21,6 @@ let size;
 const nextGameButton = `<button class="btn btn-link" onclick="nextGame()">Nächstes Spiel</button>`;
 
 const socket = io(socketUrl);
-console.log(socket);
 
 function socketConnection() {
 
@@ -95,6 +94,7 @@ function draw() {
         function drawBoard() {
             for (let x = 0; x < width; x += xArea) {
                 for (let y = 0; y < height; y += yArea) {
+                    noFill();
                     circle(x + SPACE, y + SPACE, xArea - 2 * SPACE);
                 }
             }
@@ -128,14 +128,18 @@ function mousePressed() {
     const {gameStatus, aPlayerId, bPlayerId} = gameData;
 
     if ((gameStatus === "aTurn" && player === "a") || (gameStatus === "bTurn" && player === "b")) {
-        let x = Math.floor(mouseX / xArea);
-        let y = Math.floor(mouseY / yArea);
-        if (x < 3 && y < 3) {
-            if (gameData.board[x][y] === 0) {
-                gameData.board[x][y] = player;
-                gameData.playerId = playerId;
-                socket.emit("gameProgress", gameData);
-                redraw();
+        let row = Math.floor(mouseX / xArea);
+        let rightHeight = Math.floor(mouseY / yArea);
+        if (row < 7 && rightHeight < 6) {
+            for (let line = 6; line >= 0; line--) {
+                if (gameData.board[row][line] === 0) {
+                    gameData.board[row][line] = player;
+                    gameData.playerId = playerId;
+                    gameData.gameStatus = player === "a" ? "bTurn" : "aTurn";
+                    socket.emit("gameProgress", gameData);
+                    redraw();
+                    break;
+                }
             }
         }
     }
