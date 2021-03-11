@@ -83,6 +83,7 @@ function windowResized() {
     resizeCanvas(size * 7, size * 6);
     xArea = width / 7;
     yArea = height / 6;
+    redraw();
 }
 
 /* The main drawing loop*/
@@ -92,10 +93,10 @@ function draw() {
 
         /* Inner function to draw the Tic Tac Toe board */
         function drawBoard() {
-            for (let x = 0; x < width; x += xArea) {
-                for (let y = 0; y < height; y += yArea) {
+            for (let x = 0; x < 7; x++) {
+                for (let y = 0; y < 6; y++) {
                     noFill();
-                    circle(x + SPACE, y + SPACE, xArea - 2 * SPACE);
+                    circle(x * xArea + SPACE, y * yArea + SPACE, xArea - 2 * SPACE);
                 }
             }
         }
