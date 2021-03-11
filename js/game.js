@@ -8,8 +8,10 @@ const playerScore = document.getElementById("player-score");
 const opponentScore = document.getElementById("opponent-score");
 const gameId = urlParams.get("gameId");
 const playerId = urlParams.get("playerId");
-const clientUrl = "https://tictactoe.wntzn.com";
-const socketUrl = "https://tictactoe.wntzn.com";
+// const clientUrl = "https://tictactoe.wntzn.com";
+const clientUrl = "http://localhost:5000";
+// const socketUrl = "https://tictactoe.wntzn.com";
+const socketUrl = "http://localhost:5000";
 
 let xArea, yArea;
 let gameData;
@@ -23,7 +25,6 @@ console.log(socket);
 
 function socketConnection() {
 
-
     socket.emit("join", {gameId, playerId});
 
     socket.on("connect_failed", err => {
@@ -36,7 +37,7 @@ function socketConnection() {
 
         player = playerId === gameData.aPlayerId ? "a" : "b";
 
-        if(player === "a") {
+        if (player === "a") {
             playerScore.innerText = gameData.aScore;
             opponentScore.innerText = gameData.bScore;
         } else {
@@ -68,78 +69,57 @@ function socketConnection() {
 function setup() {
     socketConnection();
     size = min(windowHeight - 280, windowWidth - 40);
-    let renderer = createCanvas(size, size);
+    size = size / 7;
+    let renderer = createCanvas(size * 7, size * 6);
     renderer.parent("playing-area");
-    xArea = width / 3;
-    yArea = height / 3;
+    xArea = width / 7;
+    yArea = height / 6;
+    ellipseMode(CORNER);
     noLoop();
 }
 
 function windowResized() {
-    size = min(windowHeight - 200, windowWidth - 40);
-    resizeCanvas(size, size);
-    xArea = width / 3;
-    yArea = height / 3;
+    size = min(windowHeight - 280, windowWidth - 40);
+    size = size / 7;
+    resizeCanvas(size * 7, size * 6);
+    xArea = width / 7;
+    yArea = height / 6;
 }
 
 /* The main drawing loop*/
 function draw() {
     if (gameData) {
+        background("black");
+
         /* Inner function to draw the Tic Tac Toe board */
         function drawBoard() {
-            strokeWeight(1);
-
-            line(0, yArea, height, yArea);
-            line(0, 2 * yArea, height, 2 * yArea);
-
-            line(xArea, 0, xArea, width);
-            line(2 * xArea, 0, 2 * xArea, width);
-        }
-
-        /* Inner Function to draw all player symbols */
-        function drawXO() {
-            for (let i = 0; i <= 2; i++) {
-                for (let j = 0; j <= 2; j++) {
-                    if (gameData.board[i][j] === "b") drawX(i, j);
-                    if (gameData.board[i][j] === "a") drawO(i, j);
+            for (let x = 0; x < width; x += xArea) {
+                for (let y = 0; y < height; y += yArea) {
+                    circle(x + SPACE, y + SPACE, xArea - 2 * SPACE);
                 }
             }
         }
 
-        /* Inner Function to draw a player X symbol */
-        function drawX(x, y) {
-            strokeWeight(SPACE);
-            line(
-                x * xArea + SPACE,
-                y * yArea + SPACE,
-                x * xArea + xArea - SPACE,
-                y * yArea + yArea - SPACE
-            );
-
-            line(
-                x * xArea + SPACE,
-                y * yArea + yArea - SPACE,
-                x * xArea + xArea - SPACE,
-                y * yArea + SPACE
-            );
+        /* Inner Function to draw all player symbols */
+        function drawSymbols() {
+            for (let row = 0; row < 7; row++) {
+                for (let line = 0; line < 6; line++) {
+                    if (gameData.board[row][line] === "b") {
+                        fill("blue");
+                        circle(row * xArea + SPACE, line * yArea + SPACE, xArea - 2 * SPACE);
+                    }
+                    else if (gameData.board[row][line] === "a") {
+                        fill("red");
+                        circle(row * xArea + SPACE, line * yArea + SPACE, xArea - 2 * SPACE);
+                    }
+                }
+            }
         }
 
-        /* Inner Function to draw a player O symbol */
-        function drawO(x, y) {
-            strokeWeight(SPACE);
-            ellipseMode(CORNER);
-            ellipse(
-                x * xArea + SPACE,
-                y * yArea + SPACE,
-                xArea - 2 * SPACE,
-                yArea - 2 * SPACE
-            );
-        }
-
-        // Actual draw function implementation;
+        // Actual draw function implementation
         clear();
         drawBoard();
-        drawXO();
+        drawSymbols();
     }
 }
 
