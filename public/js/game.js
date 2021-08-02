@@ -8,7 +8,8 @@ const playerScore = document.getElementById("player-score");
 const opponentScore = document.getElementById("opponent-score");
 const gameId = urlParams.get("gameId");
 const playerId = urlParams.get("playerId");
-const clientUrl = config.clientUrl;
+// const clientUrl = config.clientUrl;
+const clientUrl = window.location.protocol + window.location.hostname;
 const apiURL = config.apiUrl;
 
 let xArea, yArea;
