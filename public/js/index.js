@@ -1,10 +1,10 @@
 const buttonNewGame = document.getElementById("button-new-game");
-const apiUrl = "https://connectfour.wntzn.com/api/games";
+const {apiUrl} = config;
 
 buttonNewGame.addEventListener("click", newGame);
 
 async function newGame() {
-    let gameData = await (await fetch(apiUrl)).json();
+    let gameData = await (await fetch(apiUrl + "/api/games")).json();
     document.location.href =
         "/game.html?gameId=" + gameData.gameId + "&playerId=" + gameData.playerId;
 }

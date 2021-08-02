@@ -6,26 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"/>
 
     <title>Vier Gewinnt</title>
     <link rel="icon" href="../img/rocket-icon.ico">
 </head>
 <body>
-<header>
+<hgroup id="home" class="container">
+    <img class="logo m-2" src="../img/rocket-icon.svg">
+    <h1 class="heading m-2">Vier Gewinnt</h1>
+    <h2 id="score" class="score m-3">Spiele mit deinen Freunden.</span></h2>
+</hgroup>
 
-    <hgroup id="home" class="container">
-        <img class="logo m-2" src="../img/rocket-icon.svg">
-        <h1 class="heading m-2">Vier Gewinnt</h1>
-        <h2 id="score" class="score m-3">Spiele mit deinen Freunden.</span></h2>
-    </hgroup>
+<nav class="container nav">
+    <button id="button-new-game" class="btn btn-warning">Neues Spiel</button>
+</nav>
 
-    <nav class="container nav">
-        <button id="button-new-game" class="btn btn-warning">Neues Spiel</button>
-    </nav>
-
-</header>
-
+<script src="js/config.js"></script>
 <script src="js/index.js"></script>
 
 </body>

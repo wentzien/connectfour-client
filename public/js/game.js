@@ -10,7 +10,7 @@ const gameId = urlParams.get("gameId");
 const playerId = urlParams.get("playerId");
 // const clientUrl = config.clientUrl;
 const clientUrl = window.location.protocol + window.location.hostname;
-const apiURL = config.apiUrl;
+const {apiURL} = config;
 
 let xArea, yArea;
 let gameData;

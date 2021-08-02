@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"/>
 
     <title>Vier Gewinnt</title>
 
     <link rel="icon" href="../img/rocket-icon.ico">
-  </head>
-  <body>
-    <header>
-      <hgroup id="home" class="container">
-        <img class="logo m-2" src="../img/rocket-icon.svg">
-        <h1 class="heading m-2">Vier Gewinnt</h1>
-        <h2 id="score" class="score m-3">Spielstand: <span id="player-score">0</span> (du) :
-          <span id="opponent-score">0</span></h2>
-      </hgroup>
-      <div class="container">
-        <button id="button-invite-link" class="btn btn-warning m-3">Mitspieler Link kopieren</button>
-        <div id="game-message" class="alert alert-primary m-3" role="alert">
-          Verbindung zum Server wird hergestellt...
-        </div>
-      </div>
-    </header>
+</head>
+<body>
+<hgroup id="home" class="container">
+    <img class="logo m-2" src="../img/rocket-icon.svg">
+    <h1 class="heading m-2">Vier Gewinnt</h1>
+    <h2 id="score" class="score m-3">Spielstand: <span id="player-score">0</span> (du) :
+        <span id="opponent-score">0</span></h2>
+</hgroup>
+<div class="container">
+    <button id="button-invite-link" class="btn btn-warning m-3">Mitspieler Link kopieren</button>
+    <div id="game-message" class="alert alert-primary m-3" role="alert">
+        Verbindung zum Server wird hergestellt...
+    </div>
+</div>
 
-    <main class="container"><div id="playing-area"></div></main>
+<main class="container">
+    <div id="playing-area"></div>
+</main>
 
-    <script src="js/config.js"></script>
-    <script
-      src="https://cdn.socket.io/3.1.1/socket.io.min.js"
-      integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+<script src="js/config.js"></script>
+<script
+        src="https://cdn.socket.io/3.1.1/socket.io.min.js"
+        integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO"
+        crossorigin="anonymous"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
 
-    <script src="js/game.js"></script>
-  </body>
+<script src="js/game.js"></script>
+</body>
 </html>
