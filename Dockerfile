@@ -2,7 +2,9 @@ FROM node:12
 
 WORKDIR /app
 
-ENV PORT 80
+ENV PORT=80
+ENV API_URL=""
+ENV CLIENT_URL=""
 
 COPY package.json ./
 
