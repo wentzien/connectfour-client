@@ -10,7 +10,7 @@ const gameId = urlParams.get("gameId");
 const playerId = urlParams.get("playerId");
 // const clientUrl = config.clientUrl;
 const clientUrl = window.location.protocol + window.location.hostname;
-const {apiURL} = config;
+const {apiUrl} = config;
 
 let xArea, yArea;
 let gameData;
@@ -19,7 +19,7 @@ const SPACE = 5;
 let size;
 const nextGameButton = `<button class="btn btn-link" onclick="nextGame()">Nächstes Spiel</button>`;
 
-const socket = io(apiURL);
+const socket = io(apiUrl);
 
 function socketConnection() {
 
