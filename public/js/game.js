@@ -8,8 +8,8 @@ const playerScore = document.getElementById("player-score");
 const opponentScore = document.getElementById("opponent-score");
 const gameId = urlParams.get("gameId");
 const playerId = urlParams.get("playerId");
-const clientUrl = "https://connectfour.wntzn.com";
-const socketUrl = "https://connectfour.wntzn.com";
+const clientUrl = config.clientUrl;
+const apiURL = config.apiUrl;
 
 let xArea, yArea;
 let gameData;
@@ -18,7 +18,7 @@ const SPACE = 5;
 let size;
 const nextGameButton = `<button class="btn btn-link" onclick="nextGame()">Nächstes Spiel</button>`;
 
-const socket = io(socketUrl);
+const socket = io(apiURL);
 
 function socketConnection() {
 
@@ -106,8 +106,7 @@ function draw() {
                     if (gameData.board[row][line] === "b") {
                         fill("blue");
                         circle(row * xArea + SPACE, line * yArea + SPACE, xArea - 2 * SPACE);
-                    }
-                    else if (gameData.board[row][line] === "a") {
+                    } else if (gameData.board[row][line] === "a") {
                         fill("red");
                         circle(row * xArea + SPACE, line * yArea + SPACE, xArea - 2 * SPACE);
                     }
